@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://dyuxdex5ctdql"]
+
+[ext_resource type="Script" path="res://Player.gd" id="1_w5jo6"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_npesi"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_e2bnt"]
+material = SubResource("StandardMaterial3D_npesi")
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4qm1x"]
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_w5jo6")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_e2bnt")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_4qm1x")
+
+[node name="Head" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Head"]
+
+[node name="InteractionCast" type="RayCast3D" parent="Head"]
+target_position = Vector3(0, 0, -3)
+
+[node name="Hand" type="Node3D" parent="Head"]
