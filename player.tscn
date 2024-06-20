@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://dyuxdex5ctdql"]
+[gd_scene load_steps=6 format=3 uid="uid://dyuxdex5ctdql"]
 
 [ext_resource type="Script" path="res://Player.gd" id="1_w5jo6"]
+[ext_resource type="PackedScene" uid="uid://iuu6y0j6wwsx" path="res://player_gui.tscn" id="2_lq8ed"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_npesi"]
 albedo_color = Color(1, 0, 0, 1)
@@ -28,3 +29,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 target_position = Vector3(0, 0, -3)
 
 [node name="Hand" type="Node3D" parent="Head"]
+
+[node name="PlayerGui" parent="." instance=ExtResource("2_lq8ed")]
