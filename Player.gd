@@ -64,5 +64,5 @@ func _interact():
 			body._interact()
 			
 		if body.is_in_group("math_object"):
+			var obj_correct_val = body.correct_value
 			gui._toggle_math_menu()
-			can_move != can_move
