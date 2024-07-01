@@ -34,6 +34,7 @@ grow_vertical = 2
 color = Color(1, 1, 1, 0.266667)
 
 [node name="LineEdit" type="LineEdit" parent="MathMenu/EntryBox"]
+layout_mode = 0
 offset_right = 576.0
 offset_bottom = 80.0
 
@@ -62,3 +63,17 @@ offset_bottom = -200.0
 grow_horizontal = 2
 grow_vertical = 0
 text = "Continue"
+
+[node name="ErrorMessage" type="Label" parent="MathMenu"]
+visible = false
+layout_mode = 0
+offset_left = 288.0
+offset_top = 288.0
+offset_right = 864.0
+offset_bottom = 368.0
+theme_override_font_sizes/font_size = 24
+text = "Invalid input (must be a number)"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="MathMenu/Button" to="." method="_on_button_pressed"]
