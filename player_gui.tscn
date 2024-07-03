@@ -38,14 +38,14 @@ layout_mode = 0
 offset_right = 576.0
 offset_bottom = 80.0
 
-[node name="Label" type="Label" parent="MathMenu"]
+[node name="EquasionLabel" type="Label" parent="MathMenu"]
 layout_mode = 0
 offset_left = 384.0
 offset_top = 208.0
 offset_right = 768.0
 offset_bottom = 271.0
 theme_override_font_sizes/font_size = 40
-text = "Enter Number"
+text = "error"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -64,6 +64,21 @@ grow_horizontal = 2
 grow_vertical = 0
 text = "Continue"
 
+[node name="ExitButton" type="Button" parent="MathMenu"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 472.0
+offset_top = -632.0
+offset_right = 552.0
+offset_bottom = -568.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Close"
+
 [node name="ErrorMessage" type="Label" parent="MathMenu"]
 visible = false
 layout_mode = 0
@@ -77,3 +92,4 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [connection signal="pressed" from="MathMenu/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="MathMenu/ExitButton" to="." method="_on_exit_button_pressed"]

@@ -1,5 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://b1b0bbf8fcqgd"]
+[gd_scene load_steps=10 format=3 uid="uid://b1b0bbf8fcqgd"]
 
+[ext_resource type="Script" path="res://test_scene.gd" id="1_2nkap"]
 [ext_resource type="PackedScene" uid="uid://dyuxdex5ctdql" path="res://player.tscn" id="1_w427y"]
 [ext_resource type="PackedScene" uid="uid://4lnn83ksovkf" path="res://world_environment.tscn" id="2_udj1e"]
 [ext_resource type="Script" path="res://TestInteracteObj.gd" id="3_b1ku8"]
@@ -19,6 +20,7 @@ material = SubResource("StandardMaterial3D_b2cah")
 [sub_resource type="BoxShape3D" id="BoxShape3D_m8ncy"]
 
 [node name="Test Scene" type="Node3D"]
+script = ExtResource("1_2nkap")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("PlaneMesh_gu0ra")
@@ -36,9 +38,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 [node name="InteractBody" type="StaticBody3D" parent="." groups=["interactable", "math_object"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 1, 0)
 script = ExtResource("3_b1ku8")
+correct_value = 3.0
+equasion = "2 + 1"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="InteractBody"]
 mesh = SubResource("BoxMesh_fjnxv")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="InteractBody"]
 shape = SubResource("BoxShape3D_m8ncy")
+
+[connection signal="correct_value_entered" from="Player" to="." method="_on_player_correct_value_entered"]

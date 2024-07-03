@@ -41,4 +41,4 @@ target_position = Vector3(0, 0, -3)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
-[connection signal="correct_value_entered" from="PlayerGui" to="." method="_on_player_gui_correct_value_entered"]
+[connection signal="valid_text_entered" from="PlayerGui" to="." method="_on_player_gui_valid_text_entered"]

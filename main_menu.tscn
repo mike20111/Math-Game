@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://main_menu.gd" id="1_1t7sw"]
 
-[sub_resource type="Animation" id="Animation_cxxyc"]
-resource_name = "stage_enable"
+[sub_resource type="Animation" id="Animation_jc5vs"]
+length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -29,8 +29,8 @@ tracks/1/keys = {
 "values": [Vector2(0, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_jc5vs"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_cxxyc"]
+resource_name = "stage_enable"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
