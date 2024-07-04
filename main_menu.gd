@@ -15,7 +15,7 @@ func _process(delta):
 
 
 func _on_play_button_pressed():
-	_stage_menu_toggle()
+	anim_player.play("stage_enable")
 
 func _on_settings_button_pressed():
 	# _settings_menu_toggle()

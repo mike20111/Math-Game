@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dmpya7s0dww7a"]
+[gd_scene load_steps=6 format=3 uid="uid://dmpya7s0dww7a"]
 
 [ext_resource type="Script" path="res://main_menu.gd" id="1_1t7sw"]
 
@@ -28,6 +28,30 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector2(0, 0)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Camera3D:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Camera3D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 2)]
+}
 
 [sub_resource type="Animation" id="Animation_cxxyc"]
 resource_name = "stage_enable"
@@ -55,12 +79,38 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector2(0, 0)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Camera3D:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -0.74447, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Camera3D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 2), Vector3(2.43428, 0, 2)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qe26k"]
 _data = {
 "RESET": SubResource("Animation_jc5vs"),
 "stage_enable": SubResource("Animation_cxxyc")
 }
+
+[sub_resource type="BoxMesh" id="BoxMesh_imfux"]
 
 [node name="MainMenu" type="Node3D"]
 script = ExtResource("1_1t7sw")
@@ -71,7 +121,24 @@ anchors_preset = 0
 offset_right = 1152.0
 offset_bottom = 650.0
 
+[node name="ScrollContainer" type="ScrollContainer" parent="StageSelect"]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+vertical_scroll_mode = 0
+
+[node name="Control" type="Control" parent="StageSelect/ScrollContainer"]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="StageSelect/ScrollContainer/Control"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 128.0
+offset_right = 336.0
+offset_bottom = 632.0
+
 [node name="Main" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1152.0
@@ -129,6 +196,17 @@ offset_bottom = 650.0
 libraries = {
 "": SubResource("AnimationLibrary_qe26k")
 }
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.668567, 0.00265024, -0.743648, -0.348878, 0.884236, -0.310503, 0.656737, 0.467034, 0.592095, 0, 0, -3)
+mesh = SubResource("BoxMesh_imfux")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.668567, 0.00265024, -0.743648, -0.348878, 0.884236, -0.310503, 0.656737, 0.467034, 0.592095, 7.67119, 0, -3)
+mesh = SubResource("BoxMesh_imfux")
 
 [connection signal="pressed" from="Main/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="Main/SettingsButton" to="." method="_on_settings_button_pressed"]

@@ -20,6 +20,7 @@ material = SubResource("StandardMaterial3D_b2cah")
 [sub_resource type="BoxShape3D" id="BoxShape3D_m8ncy"]
 
 [node name="Test Scene" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00892687, -0.0254428, -0.00621557)
 script = ExtResource("1_2nkap")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
