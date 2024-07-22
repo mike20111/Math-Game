@@ -11,11 +11,13 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
-
+	if Input.is_action_just_pressed("escape"):
+		stage_select.hide()
+		main_menu.show()
 
 func _on_play_button_pressed():
-	anim_player.play("stage_enable")
+	main_menu.hide()
+	stage_select.show()
 
 func _on_settings_button_pressed():
 	# _settings_menu_toggle()
@@ -30,3 +32,11 @@ func _on_quit_button_pressed():
 
 func _stage_menu_toggle():
 	pass
+
+
+func _on_tutorial_button_pressed():
+	get_tree().change_scene_to_file("res://test_scene.tscn")
+
+
+func _on_level_button_pressed():
+	#get buton to pass int, use int to get the number of level in lsit , use list to get stage

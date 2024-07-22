@@ -1,114 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://dmpya7s0dww7a"]
+[gd_scene load_steps=5 format=3 uid="uid://dmpya7s0dww7a"]
 
 [ext_resource type="Script" path="res://main_menu.gd" id="1_1t7sw"]
+[ext_resource type="Script" path="res://LevelButton.gd" id="2_88815"]
 
-[sub_resource type="Animation" id="Animation_jc5vs"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Main:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("StageSelect:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Camera3D:rotation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Camera3D:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 2)]
-}
-
-[sub_resource type="Animation" id="Animation_cxxyc"]
-resource_name = "stage_enable"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Main:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("StageSelect:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Camera3D:rotation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, -0.74447, 0)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Camera3D:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 2), Vector3(2.43428, 0, 2)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_qe26k"]
-_data = {
-"RESET": SubResource("Animation_jc5vs"),
-"stage_enable": SubResource("Animation_cxxyc")
-}
+[sub_resource type="CanvasTexture" id="CanvasTexture_ag8jh"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_imfux"]
 
@@ -123,19 +18,309 @@ offset_bottom = 650.0
 
 [node name="ScrollContainer" type="ScrollContainer" parent="StageSelect"]
 layout_mode = 0
+offset_top = 24.0
 offset_right = 1152.0
-offset_bottom = 648.0
-vertical_scroll_mode = 0
+offset_bottom = 672.0
+follow_focus = true
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
 
 [node name="Control" type="Control" parent="StageSelect/ScrollContainer"]
+clip_contents = true
+custom_minimum_size = Vector2(1152, 1000)
 layout_mode = 2
 
-[node name="ColorRect" type="ColorRect" parent="StageSelect/ScrollContainer/Control"]
+[node name="StageContainer1" type="ColorRect" parent="StageSelect/ScrollContainer/Control"]
 layout_mode = 0
 offset_left = 16.0
-offset_top = 128.0
-offset_right = 336.0
-offset_bottom = 632.0
+offset_top = 16.0
+offset_right = 1136.0
+offset_bottom = 464.0
+color = Color(0.164706, 0.164706, 0.164706, 1)
+
+[node name="TitleContainer" type="ColorRect" parent="StageSelect/ScrollContainer/Control/StageContainer1"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 1104.0
+offset_bottom = 64.0
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="StageSelect/ScrollContainer/Control/StageContainer1/TitleContainer"]
+layout_mode = 0
+offset_right = 1088.0
+offset_bottom = 48.0
+theme_override_font_sizes/font_size = 30
+text = "Stage 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LevelContainer" type="ColorRect" parent="StageSelect/ScrollContainer/Control/StageContainer1"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 80.0
+offset_right = 1104.0
+offset_bottom = 440.0
+color = Color(0, 0, 0, 1)
+
+[node name="Level 1" type="ColorRect" parent="StageSelect/ScrollContainer/Control/StageContainer1/LevelContainer"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 16.0
+offset_right = 264.0
+offset_bottom = 344.0
+color = Color(0.14902, 0.14902, 0.14902, 1)
+
+[node name="Label" type="Label" parent="StageSelect/ScrollContainer/Control/StageContainer1/LevelContainer/Level 1"]
+layout_mode = 2
+offset_right = 256.0
+offset_bottom = 40.0
+theme_override_font_sizes/font_size = 20
+text = "Level 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="StageSelect/ScrollContainer/Control/StageContainer1/LevelContainer/Level 1"]
+layout_mode = 2
+offset_left = 8.0
+offset_top = 48.0
+offset_right = 248.0
+offset_bottom = 280.0
+texture = SubResource("CanvasTexture_ag8jh")
+
+[node name="LevelButton" type="Button" parent="StageSelect/ScrollContainer/Control/StageContainer1/LevelContainer/Level 1"]
+show_behind_parent = true
+layout_mode = 0
+offset_right = 256.0
+offset_bottom = 328.0
+script = ExtResource("2_88815")
+
+[node name="Level 2" type="ColorRect" parent="StageSelect/ScrollContainer/Control/StageContainer1/LevelContainer"]
+layout_mode = 0
+offset_left = 280.0
+offset_top = 16.0
+offset_right = 536.0
+offset_bottom = 344.0
+color = Color(0.14902, 0.14902, 0.14902, 1)
+
+[node name="Label" type="Label" parent="StageSelect/ScrollContainer/Control/StageContainer1/LevelContainer/Level 2"]
+layout_mode = 2
+offset_right = 256.0
+offset_bottom = 40.0
+theme_override_font_sizes/font_size = 20
+text = "Level 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="StageSelect/ScrollContainer/Control/StageContainer1/LevelContainer/Level 2"]
+layout_mode = 2
+offset_left = 8.0
+offset_top = 48.0
+offset_right = 248.0
+offset_bottom = 280.0
+texture = SubResource("CanvasTexture_ag8jh")
+
+[node name="Level 3" type="ColorRect" parent="StageSelect/ScrollContainer/Control/StageContainer1/LevelContainer"]
+layout_mode = 0
+offset_left = 552.0
+offset_top = 16.0
+offset_right = 808.0
+offset_bottom = 344.0
+color = Color(0.14902, 0.14902, 0.14902, 1)
+
+[node name="Label" type="Label" parent="StageSelect/ScrollContainer/Control/StageContainer1/LevelContainer/Level 3"]
+layout_mode = 2
+offset_right = 256.0
+offset_bottom = 40.0
+theme_override_font_sizes/font_size = 20
+text = "Level 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="StageSelect/ScrollContainer/Control/StageContainer1/LevelContainer/Level 3"]
+layout_mode = 2
+offset_left = 8.0
+offset_top = 48.0
+offset_right = 248.0
+offset_bottom = 280.0
+texture = SubResource("CanvasTexture_ag8jh")
+
+[node name="Level 4" type="ColorRect" parent="StageSelect/ScrollContainer/Control/StageContainer1/LevelContainer"]
+layout_mode = 0
+offset_left = 824.0
+offset_top = 16.0
+offset_right = 1080.0
+offset_bottom = 344.0
+color = Color(0.14902, 0.14902, 0.14902, 1)
+
+[node name="Label" type="Label" parent="StageSelect/ScrollContainer/Control/StageContainer1/LevelContainer/Level 4"]
+layout_mode = 2
+offset_right = 256.0
+offset_bottom = 40.0
+theme_override_font_sizes/font_size = 20
+text = "Level 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="StageSelect/ScrollContainer/Control/StageContainer1/LevelContainer/Level 4"]
+layout_mode = 2
+offset_left = 8.0
+offset_top = 48.0
+offset_right = 248.0
+offset_bottom = 280.0
+texture = SubResource("CanvasTexture_ag8jh")
+
+[node name="StageContainer2" type="ColorRect" parent="StageSelect/ScrollContainer/Control"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 480.0
+offset_right = 1136.0
+offset_bottom = 928.0
+color = Color(0.164706, 0.164706, 0.164706, 1)
+
+[node name="TitleContainer" type="ColorRect" parent="StageSelect/ScrollContainer/Control/StageContainer2"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 1104.0
+offset_bottom = 64.0
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="StageSelect/ScrollContainer/Control/StageContainer2/TitleContainer"]
+layout_mode = 0
+offset_right = 1088.0
+offset_bottom = 48.0
+theme_override_font_sizes/font_size = 30
+text = "Stage 2
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LevelContainer" type="ColorRect" parent="StageSelect/ScrollContainer/Control/StageContainer2"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 80.0
+offset_right = 1104.0
+offset_bottom = 440.0
+color = Color(0, 0, 0, 1)
+
+[node name="Level 1" type="ColorRect" parent="StageSelect/ScrollContainer/Control/StageContainer2/LevelContainer"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 16.0
+offset_right = 264.0
+offset_bottom = 344.0
+color = Color(0.14902, 0.14902, 0.14902, 1)
+
+[node name="Label" type="Label" parent="StageSelect/ScrollContainer/Control/StageContainer2/LevelContainer/Level 1"]
+layout_mode = 2
+offset_right = 256.0
+offset_bottom = 40.0
+theme_override_font_sizes/font_size = 20
+text = "Level 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="StageSelect/ScrollContainer/Control/StageContainer2/LevelContainer/Level 1"]
+layout_mode = 2
+offset_left = 8.0
+offset_top = 48.0
+offset_right = 248.0
+offset_bottom = 280.0
+texture = SubResource("CanvasTexture_ag8jh")
+
+[node name="Level 2" type="ColorRect" parent="StageSelect/ScrollContainer/Control/StageContainer2/LevelContainer"]
+layout_mode = 0
+offset_left = 280.0
+offset_top = 16.0
+offset_right = 536.0
+offset_bottom = 344.0
+color = Color(0.14902, 0.14902, 0.14902, 1)
+
+[node name="Label" type="Label" parent="StageSelect/ScrollContainer/Control/StageContainer2/LevelContainer/Level 2"]
+layout_mode = 2
+offset_right = 256.0
+offset_bottom = 40.0
+theme_override_font_sizes/font_size = 20
+text = "Level 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="StageSelect/ScrollContainer/Control/StageContainer2/LevelContainer/Level 2"]
+layout_mode = 2
+offset_left = 8.0
+offset_top = 48.0
+offset_right = 248.0
+offset_bottom = 280.0
+texture = SubResource("CanvasTexture_ag8jh")
+
+[node name="Level 3" type="ColorRect" parent="StageSelect/ScrollContainer/Control/StageContainer2/LevelContainer"]
+layout_mode = 0
+offset_left = 552.0
+offset_top = 16.0
+offset_right = 808.0
+offset_bottom = 344.0
+color = Color(0.14902, 0.14902, 0.14902, 1)
+
+[node name="Label" type="Label" parent="StageSelect/ScrollContainer/Control/StageContainer2/LevelContainer/Level 3"]
+layout_mode = 2
+offset_right = 256.0
+offset_bottom = 40.0
+theme_override_font_sizes/font_size = 20
+text = "Level 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="StageSelect/ScrollContainer/Control/StageContainer2/LevelContainer/Level 3"]
+layout_mode = 2
+offset_left = 8.0
+offset_top = 48.0
+offset_right = 248.0
+offset_bottom = 280.0
+texture = SubResource("CanvasTexture_ag8jh")
+
+[node name="Level 4" type="ColorRect" parent="StageSelect/ScrollContainer/Control/StageContainer2/LevelContainer"]
+layout_mode = 0
+offset_left = 824.0
+offset_top = 16.0
+offset_right = 1080.0
+offset_bottom = 344.0
+color = Color(0.14902, 0.14902, 0.14902, 1)
+
+[node name="Label" type="Label" parent="StageSelect/ScrollContainer/Control/StageContainer2/LevelContainer/Level 4"]
+layout_mode = 2
+offset_right = 256.0
+offset_bottom = 40.0
+theme_override_font_sizes/font_size = 20
+text = "Level 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="StageSelect/ScrollContainer/Control/StageContainer2/LevelContainer/Level 4"]
+layout_mode = 2
+offset_left = 8.0
+offset_top = 48.0
+offset_right = 248.0
+offset_bottom = 280.0
+texture = SubResource("CanvasTexture_ag8jh")
+
+[node name="ScrollContainer2" type="ScrollContainer" parent="StageSelect"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.037
+anchor_right = 1.0
+anchor_bottom = 1.095
+offset_top = -0.0500011
+offset_bottom = -39.75
+scroll_vertical_custom_step = 1130.62
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
+scroll_deadzone = 1
+
+[node name="ColorRect" type="ColorRect" parent="StageSelect/ScrollContainer2"]
+custom_minimum_size = Vector2(1152, 1000)
+layout_mode = 2
 
 [node name="Main" type="Control" parent="."]
 visible = false
@@ -160,12 +345,21 @@ offset_right = 208.0
 offset_bottom = 376.0
 text = "Settings"
 
+[node name="TutorialButton" type="Button" parent="Main"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 392.0
+offset_right = 208.0
+offset_bottom = 440.0
+text = "Tutorial
+"
+
 [node name="CreditsButton" type="Button" parent="Main"]
 layout_mode = 0
 offset_left = 40.0
-offset_top = 392.0
+offset_top = 456.0
 offset_right = 184.0
-offset_bottom = 440.0
+offset_bottom = 504.0
 text = "Credits
 "
 
@@ -192,11 +386,6 @@ anchors_preset = 0
 offset_right = 1152.0
 offset_bottom = 650.0
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_qe26k")
-}
-
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
 
@@ -208,7 +397,9 @@ mesh = SubResource("BoxMesh_imfux")
 transform = Transform3D(0.668567, 0.00265024, -0.743648, -0.348878, 0.884236, -0.310503, 0.656737, 0.467034, 0.592095, 7.67119, 0, -3)
 mesh = SubResource("BoxMesh_imfux")
 
+[connection signal="pressed" from="StageSelect/ScrollContainer/Control/StageContainer1/LevelContainer/Level 1/LevelButton" to="." method="_on_level_button_pressed"]
 [connection signal="pressed" from="Main/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="Main/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="Main/TutorialButton" to="." method="_on_tutorial_button_pressed"]
 [connection signal="pressed" from="Main/CreditsButton" to="." method="_on_credits_button_pressed"]
 [connection signal="pressed" from="Main/QuitButton" to="." method="_on_quit_button_pressed"]
