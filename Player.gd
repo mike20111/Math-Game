@@ -37,6 +37,10 @@ func _ready():
 # Called at a fixed rate
 func _physics_process(delta):
 	
+	if Input.is_action_just_pressed("escape"):
+		if gui.math_menu.visible:
+			gui._toggle_math_menu()
+	
 	if gui.math_menu.visibility_changed:
 		if gui.math_menu.visible == true:
 			can_move = false

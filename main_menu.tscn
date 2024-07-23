@@ -18,9 +18,10 @@ offset_bottom = 650.0
 
 [node name="ScrollContainer" type="ScrollContainer" parent="StageSelect"]
 layout_mode = 0
-offset_top = 24.0
-offset_right = 1152.0
-offset_bottom = 672.0
+offset_left = -6.295
+offset_top = 54.0
+offset_right = 1153.7
+offset_bottom = 701.0
 follow_focus = true
 horizontal_scroll_mode = 0
 vertical_scroll_mode = 2
@@ -97,10 +98,10 @@ script = ExtResource("2_88815")
 
 [node name="Level 2" type="ColorRect" parent="StageSelect/ScrollContainer/Control/StageContainer1/LevelContainer"]
 layout_mode = 0
-offset_left = 280.0
-offset_top = 16.0
-offset_right = 536.0
-offset_bottom = 344.0
+offset_left = 280.295
+offset_top = 18.0
+offset_right = 536.295
+offset_bottom = 346.0
 color = Color(0.14902, 0.14902, 0.14902, 1)
 
 [node name="Label" type="Label" parent="StageSelect/ScrollContainer/Control/StageContainer1/LevelContainer/Level 2"]
@@ -120,11 +121,19 @@ offset_right = 248.0
 offset_bottom = 280.0
 texture = SubResource("CanvasTexture_ag8jh")
 
+[node name="LevelButton" type="Button" parent="StageSelect/ScrollContainer/Control/StageContainer1/LevelContainer/Level 2"]
+show_behind_parent = true
+layout_mode = 0
+offset_right = 256.0
+offset_bottom = 328.0
+script = ExtResource("2_88815")
+button_level = 1
+
 [node name="Level 3" type="ColorRect" parent="StageSelect/ScrollContainer/Control/StageContainer1/LevelContainer"]
 layout_mode = 0
-offset_left = 552.0
+offset_left = 552.295
 offset_top = 16.0
-offset_right = 808.0
+offset_right = 808.295
 offset_bottom = 344.0
 color = Color(0.14902, 0.14902, 0.14902, 1)
 
@@ -145,11 +154,19 @@ offset_right = 248.0
 offset_bottom = 280.0
 texture = SubResource("CanvasTexture_ag8jh")
 
+[node name="LevelButton" type="Button" parent="StageSelect/ScrollContainer/Control/StageContainer1/LevelContainer/Level 3"]
+show_behind_parent = true
+layout_mode = 0
+offset_right = 256.0
+offset_bottom = 328.0
+script = ExtResource("2_88815")
+button_level = 3
+
 [node name="Level 4" type="ColorRect" parent="StageSelect/ScrollContainer/Control/StageContainer1/LevelContainer"]
 layout_mode = 0
-offset_left = 824.0
+offset_left = 822.295
 offset_top = 16.0
-offset_right = 1080.0
+offset_right = 1078.29
 offset_bottom = 344.0
 color = Color(0.14902, 0.14902, 0.14902, 1)
 
@@ -169,6 +186,14 @@ offset_top = 48.0
 offset_right = 248.0
 offset_bottom = 280.0
 texture = SubResource("CanvasTexture_ag8jh")
+
+[node name="LevelButton" type="Button" parent="StageSelect/ScrollContainer/Control/StageContainer1/LevelContainer/Level 4"]
+show_behind_parent = true
+layout_mode = 0
+offset_right = 256.0
+offset_bottom = 328.0
+script = ExtResource("2_88815")
+button_level = 3
 
 [node name="StageContainer2" type="ColorRect" parent="StageSelect/ScrollContainer/Control"]
 layout_mode = 0
@@ -304,23 +329,26 @@ offset_right = 248.0
 offset_bottom = 280.0
 texture = SubResource("CanvasTexture_ag8jh")
 
-[node name="ScrollContainer2" type="ScrollContainer" parent="StageSelect"]
-visible = false
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 0.037
-anchor_right = 1.0
-anchor_bottom = 1.095
-offset_top = -0.0500011
-offset_bottom = -39.75
-scroll_vertical_custom_step = 1130.62
-horizontal_scroll_mode = 0
-vertical_scroll_mode = 2
-scroll_deadzone = 1
+[node name="ColorRect" type="ColorRect" parent="StageSelect"]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 56.0
+color = Color(0.376471, 0.376471, 0.376471, 1)
 
-[node name="ColorRect" type="ColorRect" parent="StageSelect/ScrollContainer2"]
-custom_minimum_size = Vector2(1152, 1000)
-layout_mode = 2
+[node name="PlayLabel" type="Label" parent="StageSelect/ColorRect"]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 56.0
+theme_override_font_sizes/font_size = 30
+text = "Play"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="StageSelect/ColorRect"]
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 56.0
+text = "back"
 
 [node name="Main" type="Control" parent="."]
 visible = false
@@ -397,7 +425,13 @@ mesh = SubResource("BoxMesh_imfux")
 transform = Transform3D(0.668567, 0.00265024, -0.743648, -0.348878, 0.884236, -0.310503, 0.656737, 0.467034, 0.592095, 7.67119, 0, -3)
 mesh = SubResource("BoxMesh_imfux")
 
+[connection signal="level_button_pressed" from="StageSelect/ScrollContainer/Control/StageContainer1/LevelContainer/Level 1/LevelButton" to="." method="_on_level_button_level_button_pressed"]
 [connection signal="pressed" from="StageSelect/ScrollContainer/Control/StageContainer1/LevelContainer/Level 1/LevelButton" to="." method="_on_level_button_pressed"]
+[connection signal="pressed" from="StageSelect/ScrollContainer/Control/StageContainer1/LevelContainer/Level 1/LevelButton" to="StageSelect/ScrollContainer/Control/StageContainer1/LevelContainer/Level 1/LevelButton" method="_on_pressed"]
+[connection signal="pressed" from="StageSelect/ScrollContainer/Control/StageContainer1/LevelContainer/Level 2/LevelButton" to="." method="_on_level_button_pressed"]
+[connection signal="pressed" from="StageSelect/ScrollContainer/Control/StageContainer1/LevelContainer/Level 3/LevelButton" to="." method="_on_level_button_pressed"]
+[connection signal="pressed" from="StageSelect/ScrollContainer/Control/StageContainer1/LevelContainer/Level 4/LevelButton" to="." method="_on_level_button_pressed"]
+[connection signal="pressed" from="StageSelect/ColorRect/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Main/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="Main/SettingsButton" to="." method="_on_settings_button_pressed"]
 [connection signal="pressed" from="Main/TutorialButton" to="." method="_on_tutorial_button_pressed"]
