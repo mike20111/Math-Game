@@ -1,0 +1,53 @@
+[gd_scene load_steps=8 format=3 uid="uid://bqkvncip1ue74"]
+
+[ext_resource type="PackedScene" uid="uid://dyuxdex5ctdql" path="res://player.tscn" id="1_h8vdy"]
+[ext_resource type="PackedScene" uid="uid://4lnn83ksovkf" path="res://world_environment.tscn" id="2_laoal"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i1iqa"]
+albedo_color = Color(0, 0.8, 0, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_tykb1"]
+material = SubResource("StandardMaterial3D_i1iqa")
+size = Vector2(10, 14)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_tktya"]
+data = PackedVector3Array(5, 0, 7, -5, 0, 7, 5, 0, -7, -5, 0, 7, -5, 0, -7, 5, 0, -7)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_4lbd2"]
+data = PackedVector3Array(5, 0, 7, -5, 0, 7, 5, 0, -7, -5, 0, 7, -5, 0, -7, 5, 0, -7)
+
+[sub_resource type="BoxMesh" id="BoxMesh_faoht"]
+size = Vector3(1.5, 1.5, 11)
+
+[node name="Tutorial" type="Node3D"]
+
+[node name="Floor" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.425, 0.0215278, 0, 7.10219)
+mesh = SubResource("PlaneMesh_tykb1")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Floor"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_tktya")
+
+[node name="Floor2" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 12.0215, 0, 12.1022)
+mesh = SubResource("PlaneMesh_tykb1")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Floor2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_4lbd2")
+
+[node name="Player" parent="." instance=ExtResource("1_h8vdy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="WorldEnvironment" parent="." instance=ExtResource("2_laoal")]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, -0.232997, 13.1164)
+mesh = SubResource("BoxMesh_faoht")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 1.767, 13.1164)
+mesh = SubResource("BoxMesh_faoht")
