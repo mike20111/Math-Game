@@ -12,11 +12,13 @@ signal correct_value_entered
 @onready var camera = $Head/Camera3D
 @onready var interaction_cast = $Head/InteractionCast
 @onready var gui = $PlayerGui
+@onready var uncrouch_cast = $UncrouchCast
 
 # Variables
 var can_move : bool = true
 var player_num_input : float
 var obj_num : int
+var crouching : bool = true
 
 # Get the gravity from the project settings to be synced with RigidBody nodes
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -24,7 +26,7 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 # On input
 func _input(event):
 	# Detects when the player moves the mouse, rotates camera accordingly
-	if event is InputEventMouseMotion:
+	if event is InputEventMouseMotion and can_move:
 		rotate_y(deg_to_rad(-event.relative.x * mouse_sens))
 		head.rotate_x(deg_to_rad(-event.relative.y * mouse_sens))
 		head.rotation.x = clamp(head.rotation.x, -1, 1)
@@ -36,6 +38,19 @@ func _ready():
 
 # Called at a fixed rate
 func _physics_process(delta):
+	# Manange Crouching
+	if is_on_floor():
+		if Input.is_action_just_pressed("crouch"):
+			$AnimationPlayer.play("crouch")
+			crouching = true
+		if Input.is_action_just_released("crouch") and not uncrouch_cast.is_colliding():
+			$AnimationPlayer.play("uncrouch")
+			crouching = false
+	
+	# If player leaves floor while crouching, uncrouch
+	if not is_on_floor() and crouching:
+		$AnimationPlayer.play("uncrouch")
+		crouching = false
 	
 	if Input.is_action_just_pressed("escape"):
 		if gui.math_menu.visible:
@@ -63,7 +78,7 @@ func _physics_process(delta):
 	# Get the input direction and handle the movement/deceleration
 	var input_dir = Input.get_vector("move_left", "move_right", "move_forward", "move_backward")
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-	if direction:
+	if direction and can_move:
 		velocity.x = direction.x * speed
 		velocity.z = direction.z * speed
 	else:

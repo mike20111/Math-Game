@@ -11,6 +11,7 @@
 script = ExtResource("1_1t7sw")
 
 [node name="StageSelect" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1152.0
@@ -351,7 +352,6 @@ offset_bottom = 56.0
 text = "back"
 
 [node name="Main" type="Control" parent="."]
-visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1152.0

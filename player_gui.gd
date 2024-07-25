@@ -16,7 +16,8 @@ var obj_correct_val
 func _toggle_math_menu():
 	if math_menu.visible == false:
 		math_menu.show()
-		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+		await get_tree().create_timer(0.1).timeout
+		Input.mouse_mode = Input.MOUSE_MODE_CONFINED
 	else:
 		math_menu.hide()
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -35,7 +36,6 @@ func _on_button_pressed():
 		if player_num_input == obj_correct_val:
 			print("correct value")
 			emit_signal("correct_value_entered")
-			await get_tree().create_timer(2).timeout
 			_toggle_math_menu()
 		else:
 			print("incorrect value")
