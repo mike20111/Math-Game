@@ -6,11 +6,16 @@ signal correct_value_entered
 @onready var input = $MathMenu/EntryBox/LineEdit
 @onready var error_message_label = $MathMenu/ErrorMessage
 @onready var equasion_label = $MathMenu/EquasionLabel
+@onready var timer_control = $TimerControl
+@onready var timer_label = $TimerControl/TimerLabel
+@onready var win_menu = $WinMenu
+@onready var win_time_label = $WinMenu/WinTimeLabel
 
 var math_menu_enabled : bool = false
 var player_num_input : float
 var obj_equasion
 var obj_correct_val
+var time : int
 
 # Toggles UI visibility
 func _toggle_math_menu():
@@ -58,3 +63,7 @@ func _text_valid() -> bool:
 # Closes math menu on exit button
 func _on_exit_button_pressed():
 	_toggle_math_menu()
+
+
+func _on_menu_button_pressed():
+	get_tree().change_scene_to_file("res://main_menu.tscn")

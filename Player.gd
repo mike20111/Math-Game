@@ -19,6 +19,7 @@ var can_move : bool = true
 var player_num_input : float
 var obj_num : int
 var crouching : bool = true
+var time_taken : int = 0
 
 # Get the gravity from the project settings to be synced with RigidBody nodes
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -59,6 +60,8 @@ func _physics_process(delta):
 	if gui.math_menu.visibility_changed:
 		if gui.math_menu.visible == true:
 			can_move = false
+		elif gui.win_menu.visible == true:
+			can_move = false
 		else:
 			can_move = true
 	
@@ -69,7 +72,6 @@ func _physics_process(delta):
 	# Handle interact
 	if Input.is_action_just_pressed("interact"):
 		_interact()
-	
 	
 	# Handle jump
 	if Input.is_action_just_pressed("jump") and is_on_floor():
@@ -109,3 +111,27 @@ func _interact():
 # Sends signal to world script
 func _on_player_gui_correct_value_entered():
 	emit_signal("correct_value_entered", obj_num)
+
+# Runs when the player wins
+# Stops timer, prints "win", sets the values for the win menu, and displays it while setting can_move and mouse input mode.
+func _on_win():
+	$PlayerTimer.stop()
+	print("win!")
+	gui.win_time_label.text = "in " + str(time_taken) + " seconds!"
+	gui.win_menu.show()
+	gui.timer_control.hide()
+	can_move = false
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	
+# Checks for when the player collides with the win area
+func _on_touch_detector_body_entered(body):
+	print(body)
+	print(body.is_in_group("win_condition"))
+	if body.is_in_group("win_condition"):
+		_on_win()
+
+# Increases the timer label by 1 second every timer timeout
+func _on_player_timer_timeout():
+	time_taken += 1
+	gui.timer_label.text = str(time_taken) + " seconds"
+	
