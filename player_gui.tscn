@@ -1,9 +1,9 @@
 [gd_scene load_steps=2 format=3 uid="uid://iuu6y0j6wwsx"]
 
-[ext_resource type="Script" path="res://player_gui.gd" id="1_er0ui"]
+[ext_resource type="Script" path="res://Scripts/player_gui.gd" id="1_tkcdw"]
 
 [node name="PlayerGui" type="CanvasLayer"]
-script = ExtResource("1_er0ui")
+script = ExtResource("1_tkcdw")
 
 [node name="MathMenu" type="Control" parent="."]
 visible = false

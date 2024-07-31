@@ -1,6 +1,7 @@
 extends CharacterBody3D
 
 signal correct_value_entered
+signal game_win
 
 # Export variables to edit in viewport
 @export var speed : float = 5.0
@@ -56,6 +57,10 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("escape"):
 		if gui.math_menu.visible:
 			gui._toggle_math_menu()
+			
+	if Input.is_action_just_pressed("enter"):
+		if gui.math_menu.visible:
+			gui._on_button_pressed()
 	
 	if gui.math_menu.visibility_changed:
 		if gui.math_menu.visible == true:
@@ -116,7 +121,7 @@ func _on_player_gui_correct_value_entered():
 # Stops timer, prints "win", sets the values for the win menu, and displays it while setting can_move and mouse input mode.
 func _on_win():
 	$PlayerTimer.stop()
-	print("win!")
+	emit_signal("game_win")
 	gui.win_time_label.text = "in " + str(time_taken) + " seconds!"
 	gui.win_menu.show()
 	gui.timer_control.hide()

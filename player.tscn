@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://dyuxdex5ctdql"]
 
-[ext_resource type="Script" path="res://Player.gd" id="1_w5jo6"]
+[ext_resource type="Script" path="res://Scripts/Player.gd" id="1_w5jo6"]
 [ext_resource type="PackedScene" uid="uid://iuu6y0j6wwsx" path="res://player_gui.tscn" id="2_lq8ed"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_npesi"]

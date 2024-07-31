@@ -8,8 +8,8 @@ var levels = ["res://test_scene.tscn"]
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
-
+	Save.load_data()
+	$"StageSelect/ScrollContainer/Control/StageContainer1/LevelContainer/Level 1/BestTimeLabel".text = "best time " + str(Save.test_scene_pb)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -20,7 +20,8 @@ func _on_play_button_pressed():
 	main_menu.hide()
 	stage_select.show()
 
-func _on_settings_button_pressed(buttonnum):
+func _on_settings_button_pressed():
+	# Open Settings Menu
 	pass
 
 func _on_credits_button_pressed():
@@ -29,14 +30,6 @@ func _on_credits_button_pressed():
 
 func _on_quit_button_pressed():
 	get_tree().quit()
-
-func _stage_menu_toggle():
-	pass
-
-
-func _on_tutorial_button_pressed():
-	get_tree().change_scene_to_file("res://test_scene.tscn")
-
 
 func _on_button_pressed():
 	_go_main_menu()
