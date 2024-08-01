@@ -1,7 +1,8 @@
-[gd_scene load_steps=23 format=3 uid="uid://dmpya7s0dww7a"]
+[gd_scene load_steps=24 format=3 uid="uid://dmpya7s0dww7a"]
 
 [ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_1t7sw"]
 [ext_resource type="Script" path="res://Scripts/LevelButton.gd" id="2_88815"]
+[ext_resource type="Texture2D" uid="uid://rpk4n1y7jkf7" path="res://Test_scene_icon.png" id="2_c1e0f"]
 [ext_resource type="PackedScene" uid="uid://4lnn83ksovkf" path="res://world_environment.tscn" id="3_k1c1v"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_ag8jh"]
@@ -71,7 +72,6 @@ data = PackedVector3Array(-0.5, 1, 2, 0.5, 1, 2, -0.5, -1, 2, 0.5, 1, 2, 0.5, -1
 script = ExtResource("1_1t7sw")
 
 [node name="StageSelect" type="Control" parent="."]
-visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1152.0
@@ -145,10 +145,11 @@ vertical_alignment = 1
 [node name="TextureRect" type="TextureRect" parent="StageSelect/ScrollContainer/Control/StageContainer1/LevelContainer/Level 1"]
 layout_mode = 2
 offset_left = 8.0
-offset_top = 48.0
-offset_right = 248.0
-offset_bottom = 280.0
-texture = SubResource("CanvasTexture_ag8jh")
+offset_top = 50.0
+offset_right = 246.0
+offset_bottom = 282.0
+texture = ExtResource("2_c1e0f")
+expand_mode = 1
 
 [node name="LevelButton" type="Button" parent="StageSelect/ScrollContainer/Control/StageContainer1/LevelContainer/Level 1"]
 show_behind_parent = true
@@ -422,6 +423,7 @@ offset_bottom = 56.0
 text = "back"
 
 [node name="Main" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1152.0

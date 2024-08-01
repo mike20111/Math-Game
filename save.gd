@@ -18,3 +18,4 @@ func _ready():
 	print(test_scene_pb)
 	load_data()
 	print(test_scene_pb)
+

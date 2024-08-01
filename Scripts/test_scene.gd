@@ -22,5 +22,6 @@ func _on_player_correct_value_entered(obj_num):
 
 func _on_player_game_win():
 	total_time = player.time_taken
-	Save.test_scene_pb = total_time
+	if total_time < Save.test_scene_pb:
+		Save.test_scene_pb = total_time
 	Save.save()

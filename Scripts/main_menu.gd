@@ -9,7 +9,7 @@ var levels = ["res://test_scene.tscn"]
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	Save.load_data()
-	$"StageSelect/ScrollContainer/Control/StageContainer1/LevelContainer/Level 1/BestTimeLabel".text = "best time " + str(Save.test_scene_pb)
+	$"StageSelect/ScrollContainer/Control/StageContainer1/LevelContainer/Level 1/BestTimeLabel".text = "best time: " + str(Save.test_scene_pb)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
