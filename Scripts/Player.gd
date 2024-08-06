@@ -43,11 +43,12 @@ func _physics_process(delta):
 	# Manange Crouching
 	if is_on_floor():
 		if Input.is_action_just_pressed("crouch"):
-			$AnimationPlayer.play("crouch")
-			crouching = true
-		if Input.is_action_just_released("crouch") and not uncrouch_cast.is_colliding():
-			$AnimationPlayer.play("uncrouch")
-			crouching = false
+			if crouching:
+				$AnimationPlayer.play("uncrouch")
+				crouching = false
+			else:
+				$AnimationPlayer.play("crouch")
+				crouching = true
 	
 	# If player leaves floor while crouching, uncrouch
 	if not is_on_floor() and crouching:

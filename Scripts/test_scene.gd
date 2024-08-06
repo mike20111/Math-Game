@@ -21,6 +21,8 @@ func _on_player_correct_value_entered(obj_num):
 		player.can_move = true
 
 func _on_player_game_win():
+	var previous_time_taken = Save.test_scene_pb
+	$Player.gui.previous_time_label.text =  "your previous best is " + str(previous_time_taken) + " seconds"
 	total_time = player.time_taken
 	if total_time < Save.test_scene_pb:
 		Save.test_scene_pb = total_time

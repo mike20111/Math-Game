@@ -139,6 +139,16 @@ text = "in 0 seconds"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="PreviousTimeLabel" type="Label" parent="WinMenu"]
+layout_mode = 0
+offset_top = 339.0
+offset_right = 1152.0
+offset_bottom = 403.0
+theme_override_font_sizes/font_size = 16
+text = "your previous best is 0 seconds"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="MenuButton" type="Button" parent="WinMenu"]
 layout_mode = 1
 anchors_preset = 8
@@ -147,9 +157,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -96.0
-offset_top = 140.0
+offset_top = 164.0
 offset_right = 96.0
-offset_bottom = 204.0
+offset_bottom = 228.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Menu"
@@ -162,9 +172,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -96.0
-offset_top = 52.0
+offset_top = 76.0
 offset_right = 96.0
-offset_bottom = 116.0
+offset_bottom = 140.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Continue

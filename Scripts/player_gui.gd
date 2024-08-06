@@ -10,6 +10,7 @@ signal correct_value_entered
 @onready var timer_label = $TimerControl/TimerLabel
 @onready var win_menu = $WinMenu
 @onready var win_time_label = $WinMenu/WinTimeLabel
+@onready var previous_time_label = $WinMenu/PreviousTimeLabel
 
 var math_menu_enabled : bool = false
 var player_num_input : float
@@ -44,8 +45,15 @@ func _on_button_pressed():
 			_toggle_math_menu()
 		else:
 			print("incorrect value")
+			error_message_label.text = "wrong answer"
+			error_message_label.show()
+			input.editable = false
+			await get_tree().create_timer(.5).timeout
+			error_message_label.hide()
+			input.editable = true
 	else:
 		print("Incorrect input type (input must be a number)")
+		error_message_label.text = "Incorrect input type (input must be a number)"
 		error_message_label.show()
 		input.editable = false
 		await get_tree().create_timer(1).timeout
