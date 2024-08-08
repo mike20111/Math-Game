@@ -10,6 +10,8 @@ background_mode = 2
 background_energy_multiplier = 2.0
 sky = SubResource("Sky_o3nq6")
 ssao_enabled = true
+ssil_enabled = true
+sdfgi_use_occlusion = true
 glow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment"]

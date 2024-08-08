@@ -35,8 +35,9 @@ func _set_var(x, y):
 	
 	equasion_label.text = obj_equasion
 
-# Checks for correct answer etc elaborate later
+# Checks for correct answer and responds accordingly
 func _on_button_pressed():
+	# If answer correct
 	if _text_valid() == true:
 		player_num_input = float(input.text)
 		if player_num_input == obj_correct_val:
@@ -44,6 +45,7 @@ func _on_button_pressed():
 			emit_signal("correct_value_entered")
 			_toggle_math_menu()
 		else:
+			# If answer incorrect
 			print("incorrect value")
 			error_message_label.text = "wrong answer"
 			error_message_label.show()
@@ -52,6 +54,7 @@ func _on_button_pressed():
 			error_message_label.hide()
 			input.editable = true
 	else:
+		# If answer invalid
 		print("Incorrect input type (input must be a number)")
 		error_message_label.text = "Incorrect input type (input must be a number)"
 		error_message_label.show()
@@ -72,6 +75,6 @@ func _text_valid() -> bool:
 func _on_exit_button_pressed():
 	_toggle_math_menu()
 
-
+# Take to main menu if menu button pressed
 func _on_menu_button_pressed():
 	get_tree().change_scene_to_file("res://main_menu.tscn")

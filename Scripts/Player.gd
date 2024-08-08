@@ -40,7 +40,7 @@ func _ready():
 
 # Called at a fixed rate
 func _physics_process(delta):
-	# Manange Crouching
+	# Manange crouching toggle
 	if is_on_floor():
 		if Input.is_action_just_pressed("crouch"):
 			if crouching:
@@ -55,14 +55,17 @@ func _physics_process(delta):
 		$AnimationPlayer.play("uncrouch")
 		crouching = false
 	
+	# Close math menu if esc button pressed
 	if Input.is_action_just_pressed("escape"):
 		if gui.math_menu.visible:
 			gui._toggle_math_menu()
 			
+	# Check answer if enter pressed
 	if Input.is_action_just_pressed("enter"):
 		if gui.math_menu.visible:
 			gui._on_button_pressed()
 	
+	# Disable can_move if math_menu is open
 	if gui.math_menu.visibility_changed:
 		if gui.math_menu.visible == true:
 			can_move = false
@@ -71,7 +74,7 @@ func _physics_process(delta):
 		else:
 			can_move = true
 	
-	# Add the gravity.
+	# Add the gravity
 	if not is_on_floor():
 		velocity.y -= gravity * delta
 
@@ -119,7 +122,8 @@ func _on_player_gui_correct_value_entered():
 	emit_signal("correct_value_entered", obj_num)
 
 # Runs when the player wins
-# Stops timer, prints "win", sets the values for the win menu, and displays it while setting can_move and mouse input mode.
+# Stops timer, prints "win", sets the values for the win menu,
+# and displays it while setting can_move and mouse input mode
 func _on_win():
 	$PlayerTimer.stop()
 	emit_signal("game_win")

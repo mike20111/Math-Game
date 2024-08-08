@@ -11,7 +11,7 @@ var difficulty = Save.difficulty
 func _ready():
 	var first_num = rng.randi_range(-10.0, 10.0)
 	var second_num = rng.randi_range(-10.0, 10.0)
-	var eq_type = rng.randi_range(0, difficulty)
+	var eq_type = rng.randi_range(0, 2)
 	
 	if eq_type == 0:
 		correct_value = first_num + second_num

@@ -12,7 +12,15 @@ func _on_player_correct_value_entered(obj_num):
 	if obj_num == 0:
 		player.can_move = false
 		$CutsceneAnimPlayer.play("cutscene_1")
-		$CutsceneCameras/Cam1.make_current()
+		$CusceneCameras/Cam1.make_current()
+		await cutscene_player.animation_finished
+		$Player/Head/Camera3D.make_current()
+		player.can_move = true
+		
+	elif obj_num == 1:
+		player.can_move = false
+		$CutsceneAnimPlayer.play("cutscene_2")
+		$CusceneCameras/Cam2.make_current()
 		await cutscene_player.animation_finished
 		$Player/Head/Camera3D.make_current()
 		player.can_move = true
