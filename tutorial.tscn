@@ -117,33 +117,6 @@ size = Vector3(1, 1.84, 4)
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_lc2nb"]
 data = PackedVector3Array(-0.5, 1, 2, 0.5, 1, 2, -0.5, -1, 2, 0.5, 1, 2, 0.5, -1, 2, -0.5, -1, 2, 0.5, 1, -2, -0.5, 1, -2, 0.5, -1, -2, -0.5, 1, -2, -0.5, -1, -2, 0.5, -1, -2, 0.5, 1, 2, 0.5, 1, -2, 0.5, -1, 2, 0.5, 1, -2, 0.5, -1, -2, 0.5, -1, 2, -0.5, 1, -2, -0.5, 1, 2, -0.5, -1, -2, -0.5, 1, 2, -0.5, -1, 2, -0.5, -1, -2, 0.5, 1, 2, -0.5, 1, 2, 0.5, 1, -2, -0.5, 1, 2, -0.5, 1, -2, 0.5, 1, -2, -0.5, -1, 2, 0.5, -1, 2, -0.5, -1, -2, 0.5, -1, 2, 0.5, -1, -2, -0.5, -1, -2)
 
-[sub_resource type="Animation" id="Animation_kt23u"]
-resource_name = "cutscene_1"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Doors/Door1/Door2:position")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0, -0.0756416, 0), Vector3(0, -0.076, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Doors/Door1/Door:position")
-tracks/1/interp = 2
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0, -0.0756416, -1), Vector3(0, -0.076, -2)]
-}
-
 [sub_resource type="Animation" id="Animation_sfsgj"]
 length = 0.001
 tracks/0/type = "value"
@@ -193,6 +166,33 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector3(-10.8526, 0, -5.92628)]
+}
+
+[sub_resource type="Animation" id="Animation_kt23u"]
+resource_name = "cutscene_1"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Doors/Door1/Door2:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, -0.0756416, 0), Vector3(0, -0.076, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Doors/Door1/Door:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, -0.0756416, -1), Vector3(0, -0.076, -2)]
 }
 
 [sub_resource type="Animation" id="Animation_vpwx7"]
@@ -587,7 +587,7 @@ transform = Transform3D(0.46168, 0, 0.526167, 0, 0.72, 0, -0.526167, 0, 0.46168,
 transform = Transform3D(0.181173, 0, -0.676148, 0, 0.72, 0, 0.676148, 0, 0.181173, 14.3426, 3.98215, 2.4334)
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 47.1903, 0, -19.1624)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48.7878, 1.84066, 15.2499)
 mesh = SubResource("BoxMesh_a1j7s")
 
 [node name="MeshInstance3D5" type="MeshInstance3D" parent="."]
@@ -618,7 +618,7 @@ mesh = SubResource("BoxMesh_useeq")
 shape = SubResource("ConcavePolygonShape3D_k61pm")
 
 [node name="MeshInstance3D21" type="MeshInstance3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0, 0.4, 0, 1, 0, -1, 0, -1.74846e-08, 43.6447, 2, 13.2666)
+transform = Transform3D(-4.37114e-08, 0, 0.72, 0, 1, 0, -1, 0, -3.14723e-08, 45.2828, 2, 13.2666)
 mesh = SubResource("BoxMesh_gd1ur")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D21"]
@@ -627,8 +627,23 @@ mesh = SubResource("BoxMesh_gd1ur")
 transform = Transform3D(0.998244, 0, 0, 0, 0.998244, 0, 0, 0, 0.998244, 0, 0, 0)
 shape = SubResource("ConcavePolygonShape3D_k61pm")
 
+[node name="SpotLight3D" type="SpotLight3D" parent="MeshInstance3D21"]
+transform = Transform3D(1, 6.99394e-09, 1.74846e-08, -1.74846e-08, -1.09278e-07, 1, 1.74846e-08, -2.5, -2.73196e-07, -2, 1.4413, 0)
+light_energy = 3.0
+spot_range = 5.412
+
+[node name="MeshInstance3D23" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 0.72, -1, -4.37114e-08, -3.14723e-08, 4.37114e-08, -1, 1.3757e-15, 45.2828, 4, 15.2666)
+mesh = SubResource("BoxMesh_gd1ur")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D23"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D23/StaticBody3D"]
+transform = Transform3D(0.998244, 0, 0, 0, 0.998244, 0, 0, 0, 0.998244, 0, 0, 0)
+shape = SubResource("ConcavePolygonShape3D_k61pm")
+
 [node name="MeshInstance3D22" type="MeshInstance3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0, 0.4, 0, 1, 0, -1, 0, -1.74846e-08, 43.6447, 2, 17.2666)
+transform = Transform3D(-4.37114e-08, 0, 0.72, 0, 1, 0, -1, 0, -3.14723e-08, 45.2828, 2, 17.2666)
 mesh = SubResource("BoxMesh_gd1ur")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D22"]
@@ -641,6 +656,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.2956, 3.06372, 15.2502)
 mesh = SubResource("BoxMesh_ru2et")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.298277, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D8/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0255394, 0.0959606, 0.00363827)

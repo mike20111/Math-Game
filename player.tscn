@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dyuxdex5ctdql"]
+[gd_scene load_steps=14 format=3 uid="uid://dyuxdex5ctdql"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_w5jo6"]
 [ext_resource type="PackedScene" uid="uid://iuu6y0j6wwsx" path="res://player_gui.tscn" id="2_lq8ed"]
@@ -232,12 +232,17 @@ tracks/4/keys = {
 "values": [Vector3(0, -0.25, 0), Vector3(0, 0, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_ht4sn"]
+resource_name = "walk"
+loop_mode = 1
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ucl85"]
 _data = {
 "RESET": SubResource("Animation_wq4yx"),
 "crouch": SubResource("Animation_xq60t"),
 "jump": SubResource("Animation_x3rk1"),
-"uncrouch": SubResource("Animation_js74t")
+"uncrouch": SubResource("Animation_js74t"),
+"walk": SubResource("Animation_ht4sn")
 }
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_pwkyf"]
@@ -265,6 +270,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 target_position = Vector3(0, 0, -3)
 
 [node name="Hand" type="Node3D" parent="Head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.181851)
 
 [node name="PlayerGui" parent="." instance=ExtResource("2_lq8ed")]
 

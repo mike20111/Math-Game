@@ -46,6 +46,7 @@ func _on_button_pressed():
 			_toggle_math_menu()
 		else:
 			# If answer incorrect
+			input.text = ""
 			print("incorrect value")
 			error_message_label.text = "wrong answer"
 			error_message_label.show()
@@ -55,6 +56,7 @@ func _on_button_pressed():
 			input.editable = true
 	else:
 		# If answer invalid
+		input.text = ""
 		print("Incorrect input type (input must be a number)")
 		error_message_label.text = "Incorrect input type (input must be a number)"
 		error_message_label.show()
@@ -62,7 +64,7 @@ func _on_button_pressed():
 		await get_tree().create_timer(1).timeout
 		error_message_label.hide()
 		input.editable = true
-	input.text = ""
+
 
 # Validates Input
 func _text_valid() -> bool:
