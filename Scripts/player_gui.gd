@@ -44,6 +44,7 @@ func _on_button_pressed():
 			print("correct value")
 			emit_signal("correct_value_entered")
 			_toggle_math_menu()
+			input.text = ""
 		else:
 			# If answer incorrect
 			input.text = ""

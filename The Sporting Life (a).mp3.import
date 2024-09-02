@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bepkb4c376ros"
+path="res://.godot/imported/The Sporting Life (a).mp3-67090d2090acf5701cfdfdf18a8316f8.mp3str"
+
+[deps]
+
+source_file="res://The Sporting Life (a).mp3"
+dest_files=["res://.godot/imported/The Sporting Life (a).mp3-67090d2090acf5701cfdfdf18a8316f8.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

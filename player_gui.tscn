@@ -1,6 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://iuu6y0j6wwsx"]
+[gd_scene load_steps=4 format=3 uid="uid://iuu6y0j6wwsx"]
 
 [ext_resource type="Script" path="res://Scripts/player_gui.gd" id="1_tkcdw"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ormmq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6vgyd"]
 
 [node name="PlayerGui" type="CanvasLayer"]
 script = ExtResource("1_tkcdw")
@@ -97,6 +101,12 @@ anchors_preset = 0
 offset_right = 1152.0
 offset_bottom = 64.0
 
+[node name="Polygon2D" type="Polygon2D" parent="TimerControl"]
+position = Vector2(-32, 0)
+scale = Vector2(1.05556, 1)
+color = Color(0, 0, 0, 0.313726)
+polygon = PackedVector2Array(432, 0, 464, 64, 688, 64, 720, 0)
+
 [node name="TimerLabel" type="Label" parent="TimerControl"]
 layout_mode = 0
 offset_right = 1152.0
@@ -162,6 +172,7 @@ offset_right = 96.0
 offset_bottom = 228.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ormmq")
 text = "Menu"
 
 [node name="ContinueButton" type="Button" parent="WinMenu"]
@@ -177,6 +188,8 @@ offset_right = 96.0
 offset_bottom = 140.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_6vgyd")
+disabled = true
 text = "Continue
 "
 

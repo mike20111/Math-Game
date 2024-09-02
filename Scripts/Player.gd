@@ -15,12 +15,14 @@ signal game_win
 @onready var gui = $PlayerGui
 @onready var uncrouch_cast = $UncrouchCast
 
+
 # Variables
 var can_move : bool = true
 var player_num_input : float
 var obj_num : int
 var crouching : bool = true
 var time_taken : int = 0
+var landing : bool = false
 
 # Get the gravity from the project settings to be synced with RigidBody nodes
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -35,12 +37,20 @@ func _input(event):
 
 # On start
 func _ready():
+	var tween = create_tween().set_parallel(false)
 	# Sets the mouse mode to captured
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	gui.timer_control.position.y -= 80
+	tween.tween_property(gui.timer_control, "position:y", 0, .5).set_ease(Tween.EASE_OUT)
 
 # Called at a fixed rate
 func _physics_process(delta):
+	var uitween = create_tween()
+	var cameratween = create_tween().set_parallel(false)
+	var camrotationtween = create_tween().set_parallel(false)
 	# Manange crouching toggle
+	
+
 	if is_on_floor():
 		if Input.is_action_just_pressed("crouch"):
 			if crouching:
@@ -85,6 +95,8 @@ func _physics_process(delta):
 	# Handle jump
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = jump_velocity
+		cameratween.tween_property($Head/Camera3D, "position:y", .1, .3).set_ease(Tween.EASE_IN_OUT)
+		cameratween.tween_property($Head/Camera3D, "position:y", 0, .5).set_ease(Tween.EASE_IN_OUT)
 
 	# Get the input direction and handle the movement/deceleration
 	var input_dir = Input.get_vector("move_left", "move_right", "move_forward", "move_backward")
@@ -97,6 +109,23 @@ func _physics_process(delta):
 		velocity.z = move_toward(velocity.z, 0, speed)
 		
 	move_and_slide()
+	
+	if input_dir.x > 0:
+		camrotationtween.tween_property($Head/Camera3D, "rotation:z", -.05, .2).set_ease(Tween.EASE_IN_OUT)
+	elif input_dir.x < 0:
+		camrotationtween.tween_property($Head/Camera3D, "rotation:z", .05, .2).set_ease(Tween.EASE_IN_OUT)
+	elif input_dir.x == 0:
+		camrotationtween.tween_property($Head/Camera3D, "rotation:z", 0, .2).set_ease(Tween.EASE_IN_OUT)
+		
+	
+	if is_on_floor():
+		if landing:
+			cameratween.tween_property($Head/Camera3D, "rotation:x", -.02, .2).set_ease(Tween.EASE_OUT)
+			cameratween.tween_property($Head/Camera3D, "rotation:x", 0, .3).set_ease(Tween.EASE_IN_OUT)
+			landing = false
+	else: # In the air 
+		if !landing: # In the air and haven't landed
+			landing = true
 
 
 # Detect object from raycast

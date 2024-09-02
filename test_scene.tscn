@@ -25,11 +25,11 @@ material = SubResource("StandardMaterial3D_b2cah")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_m8ncy"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gt3j0"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b1v3w"]
 albedo_color = Color(0, 1, 0, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_xdrql"]
-material = SubResource("StandardMaterial3D_gt3j0")
+material = SubResource("StandardMaterial3D_b1v3w")
 size = Vector3(1, 3, 3)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wpxpd"]
@@ -385,7 +385,7 @@ libraries = {
 }
 
 [node name="NumberPadInteract" parent="." groups=["interactable", "math_object"] instance=ExtResource("6_hdf7u")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 8.47691, 2.70034, 7.03263)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 8.42464, 2.70034, 7.03263)
 script = ExtResource("3_b1ku8")
 
 [connection signal="correct_value_entered" from="Player" to="." method="_on_player_correct_value_entered"]

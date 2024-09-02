@@ -4,7 +4,7 @@ extends Node3D
 @onready var main_menu = $Main
 @onready var stage_select = $StageSelect
 
-var levels = ["res://test_scene.tscn"]
+var levels = ["res://tutorial.tscn"]
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -15,6 +15,8 @@ func _ready():
 func _process(delta):
 	if Input.is_action_just_pressed("escape"):
 		_go_main_menu()
+		
+	$Camera3D.global_rotation.y += .1 * delta
 
 func _on_play_button_pressed():
 	main_menu.hide()

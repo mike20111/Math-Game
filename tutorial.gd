@@ -16,6 +16,7 @@ func _on_player_correct_value_entered(obj_num):
 		await cutscene_player.animation_finished
 		$Player/Head/Camera3D.make_current()
 		player.can_move = true
+		$Labels/Label3D4.visible = false
 		
 	elif obj_num == 1:
 		player.can_move = false

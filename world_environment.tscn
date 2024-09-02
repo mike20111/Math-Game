@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://4lnn83ksovkf"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7vmi7"]
-sky_top_color = Color(0.352941, 0.435294, 0.54902, 1)
+sky_top_color = Color(0.309804, 0.666667, 0.74902, 1)
 
 [sub_resource type="Sky" id="Sky_o3nq6"]
 sky_material = SubResource("ProceduralSkyMaterial_7vmi7")

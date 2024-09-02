@@ -1,6 +1,15 @@
-[gd_scene load_steps=8 format=3 uid="uid://dqb1i4g2wqmwp"]
+[gd_scene load_steps=10 format=3 uid="uid://dqb1i4g2wqmwp"]
+
+[ext_resource type="Shader" path="res://number_pad_interact.gdshader" id="1_d7aky"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_t3nnn"]
+render_priority = 0
+shader = ExtResource("1_d7aky")
+shader_parameter/color = Color(0, 1, 1, 1)
+shader_parameter/size = 1.1
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pwy0f"]
+next_pass = SubResource("ShaderMaterial_t3nnn")
 albedo_color = Color(0.658824, 0.658824, 0.658824, 1)
 metallic = 0.7
 

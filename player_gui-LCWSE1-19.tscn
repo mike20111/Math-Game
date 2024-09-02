@@ -1,0 +1,193 @@
+[gd_scene load_steps=2 format=3 uid="uid://iuu6y0j6wwsx"]
+
+[ext_resource type="Script" path="res://Scripts/player_gui.gd" id="1_tkcdw"]
+
+[node name="PlayerGui" type="CanvasLayer"]
+script = ExtResource("1_tkcdw")
+
+[node name="MathMenu" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="Background" type="ColorRect" parent="MathMenu"]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0, 0, 0, 0.498039)
+
+[node name="EntryBox" type="ColorRect" parent="MathMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -288.0
+offset_top = -36.0
+offset_right = 288.0
+offset_bottom = 44.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0.266667)
+
+[node name="LineEdit" type="LineEdit" parent="MathMenu/EntryBox"]
+layout_mode = 0
+offset_right = 576.0
+offset_bottom = 80.0
+
+[node name="EquasionLabel" type="Label" parent="MathMenu"]
+layout_mode = 0
+offset_left = 384.0
+offset_top = 208.0
+offset_right = 768.0
+offset_bottom = 271.0
+theme_override_font_sizes/font_size = 40
+text = "error"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="MathMenu"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -128.0
+offset_top = -264.0
+offset_right = 128.0
+offset_bottom = -200.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Continue"
+
+[node name="ExitButton" type="Button" parent="MathMenu"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 472.0
+offset_top = -632.0
+offset_right = 552.0
+offset_bottom = -568.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Close"
+
+[node name="ErrorMessage" type="Label" parent="MathMenu"]
+visible = false
+layout_mode = 0
+offset_left = 288.0
+offset_top = 288.0
+offset_right = 864.0
+offset_bottom = 368.0
+theme_override_font_sizes/font_size = 24
+text = "Invalid input (must be a number)"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TimerControl" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 64.0
+
+[node name="Polygon2D" type="Polygon2D" parent="TimerControl"]
+color = Color(0, 0, 0, 0.392157)
+polygon = PackedVector2Array(384, 0, 416, 64, 736, 64, 768, 0)
+
+[node name="Polygon2D2" type="Polygon2D" parent="TimerControl"]
+color = Color(0, 0, 0, 0.196078)
+polygon = PackedVector2Array(0, 576, 64, 648, 1088, 648, 1152, 576, 1152, 656, 0, 656)
+
+[node name="TimerLabel" type="Label" parent="TimerControl"]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 64.0
+theme_override_font_sizes/font_size = 46
+text = "0 seconds"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="WinMenu" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="ColorRect" type="ColorRect" parent="WinMenu"]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0, 0, 0, 0.498039)
+
+[node name="WinMessageLabel" type="Label" parent="WinMenu"]
+layout_mode = 0
+offset_top = 200.0
+offset_right = 1152.0
+offset_bottom = 305.0
+theme_override_font_sizes/font_size = 76
+text = "You Won!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="WinTimeLabel" type="Label" parent="WinMenu"]
+layout_mode = 0
+offset_top = 296.0
+offset_right = 1152.0
+offset_bottom = 360.0
+theme_override_font_sizes/font_size = 41
+text = "in 0 seconds"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PreviousTimeLabel" type="Label" parent="WinMenu"]
+layout_mode = 0
+offset_top = 339.0
+offset_right = 1152.0
+offset_bottom = 403.0
+theme_override_font_sizes/font_size = 16
+text = "your previous best is 0 seconds"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MenuButton" type="Button" parent="WinMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -96.0
+offset_top = 164.0
+offset_right = 96.0
+offset_bottom = 228.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Menu"
+
+[node name="ContinueButton" type="Button" parent="WinMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -96.0
+offset_top = 76.0
+offset_right = 96.0
+offset_bottom = 140.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Continue
+"
+
+[connection signal="pressed" from="MathMenu/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="MathMenu/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="WinMenu/MenuButton" to="." method="_on_menu_button_pressed"]
